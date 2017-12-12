@@ -1,6 +1,9 @@
 import axios from 'axios';
+import scapegoat from 'scapegoat';
 
 import config from '../config';
+
+const unescape = string => scapegoat.unescape(string).replace("&#039;", "'");
 
 export async function fetchQuestions() {
     try {
@@ -8,7 +11,7 @@ export async function fetchQuestions() {
             axios.get(config.QUESTION_URL)
         );
 
-        return results;
+        return results.map(result => ({ ...result, question: unescape(result.question) }));
     } catch (e) {
         console.error(e);
         return [];

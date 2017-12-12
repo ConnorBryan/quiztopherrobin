@@ -25,8 +25,10 @@ function QuizScreen(props) {
     );
 }
 
-QuizScreen.propTypes = {};
-
-QuizScreen.defaultProps = {};
+QuizScreen.propTypes = {
+    answerQuestion: PropTypes.func.isRequired,
+    questions: PropTypes.arrayOf(PropTypes.object).isRequired,
+    activeQuestion: PropTypes.number.isRequired
+};
 
 export default QuizScreen;

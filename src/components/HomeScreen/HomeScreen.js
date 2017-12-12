@@ -24,8 +24,4 @@ HomeScreen.propTypes = {
     start: PropTypes.func.isRequired
 };
 
-HomeScreen.defaultProps = {
-    start: () => {}
-};
-
 export default HomeScreen;

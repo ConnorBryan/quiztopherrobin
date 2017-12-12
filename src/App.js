@@ -68,11 +68,7 @@ class App extends Component {
   answerQuestion = answer => this.setState({
     answers: [...this.state.answers, answer],
     activeQuestion: this.state.activeQuestion + 1
-  }, () => {
-    const { questions, activeQuestion } = this.state;
-
-    if (activeQuestion >= questions.length) this.finish();
-  });
+  }, () => this.state.activeQuestion >= this.state.questions.length && this.finish());
 
   render() {
     const { ActiveScreen } = this.state;

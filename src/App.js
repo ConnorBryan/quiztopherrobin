@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
 
 import { fetchQuestions } from './services';
+import HomeScreen from './components/HomeScreen';
+import QuizScreen from './components/QuizScreen';
+import ResultsScreen from './components/ResultsScreen';
 
 class App extends Component {
-  componentDidMount() {
-    this.fetchQuestions();
+  state = {
+    questions: null,
+    inProgress: false
+  };
+
+  start = async () => {
+    await this.fetchQuestions();
+    this.setState({ inProgress: true }, () => alert(JSON.stringify(this.state.questions, null, 2)));
   }
 
   async fetchQuestions() {
-    const questions = await fetchQuestions();
-    
-    console.log(questions);
+    this.setState({ questions: await fetchQuestions() });
   }
 
   render() {
     return (
-      <p>Test</p>
+      <button onClick={this.start}>
+        Start
+      </button>
     );
   }
 }

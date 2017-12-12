@@ -15,7 +15,6 @@ class App extends Component {
     return {
       questions: null,
       answers: [],
-      inProgress: false,
       ActiveScreen: HomeScreen,
       correctAnswerCount: null,
       answerResults: null
@@ -30,7 +29,6 @@ class App extends Component {
     await this.fetchQuestions();
 
     this.setState({
-      inProgress: true,
       activeQuestion: 0,
       ActiveScreen: QuizScreen
     });
@@ -57,7 +55,6 @@ class App extends Component {
     this.setState({
       correctAnswerCount: correctAnswers.length,
       answerResults,
-      inProgress: false,
       activeQuestion: 0,
       ActiveScreen: ResultsScreen
     });

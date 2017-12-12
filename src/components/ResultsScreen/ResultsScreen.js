@@ -2,9 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function ResultsScreen(props) {
+    const { correctAnswerCount, restart } = props;
+
     return (
         <div>
-            ResultsScreen
+            You got {correctAnswerCount}/10 correct.
+            <button onClick={restart}>
+                Restart
+            </button>
         </div>
     );
 }

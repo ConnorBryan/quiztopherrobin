@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid/v1';
 
 import { fetchQuestions } from './services';
 import HomeScreen from './components/HomeScreen';
@@ -46,9 +47,11 @@ class App extends Component {
 
       return {
         questionNumber: index + 1,
+        question: question.question,
         isCorrect,
         yourAnswer: answers[index],
-        correctAnswer: question.correct_answer
+        correctAnswer: question.correct_answer,
+        key: uuid()
       };
     });
 

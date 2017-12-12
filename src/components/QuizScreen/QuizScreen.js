@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function QuizScreen(props) {
-    const { questions, answerQuestion, activeQuestion } = props;
+    const {
+        answerQuestion,
+        questions,
+        activeQuestion
+    } = props;
 
     if (activeQuestion >= questions.length) return null;
 

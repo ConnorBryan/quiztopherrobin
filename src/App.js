@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import uuid from 'uuid/v1';
+import React, { Component } from "react";
+import uuid from "uuid/v1";
 import { Container } from "semantic-ui-react";
 
-import { fetchQuestions } from './services';
-import HomeScreen from './components/HomeScreen';
-import QuizScreen from './components/QuizScreen';
-import ResultsScreen from './components/ResultsScreen';
+import { fetchQuestions } from "./services";
+import HomeScreen from "./components/HomeScreen";
+import QuizScreen from "./components/QuizScreen";
+import ResultsScreen from "./components/ResultsScreen";
 
 class App extends Component {
   constructor() {
@@ -15,6 +15,7 @@ class App extends Component {
 
   getInitialState() {
     return {
+      inProgress: false,
       questions: null,
       answers: [],
       ActiveScreen: HomeScreen,
@@ -28,19 +29,30 @@ class App extends Component {
   }
 
   start = async () => {
-    await this.fetchQuestions();
+    try {
+      this.setState({ inProgress: true });
 
-    this.setState({
-      activeQuestion: 0,
-      ActiveScreen: QuizScreen
-    });
-  }
+      await this.fetchQuestions();
+
+      this.setState({
+        activeQuestion: 0,
+        ActiveScreen: QuizScreen
+      });
+    } catch (e) {
+      this.setState({
+        inProgress: false
+      });
+    }
+  };
 
   finish() {
     const { questions, answers } = this.state;
 
     const correctAnswers = questions
-      .map(({ correct_answer }, index) => answers[index] === correct_answer ? index : null)
+      .map(
+        ({ correct_answer }, index) =>
+          answers[index] === correct_answer ? index : null
+      )
       .filter(x => x !== null);
 
     const answerResults = questions.map((question, index) => {
@@ -60,16 +72,23 @@ class App extends Component {
       correctAnswerCount: correctAnswers.length,
       answerResults,
       activeQuestion: 0,
-      ActiveScreen: ResultsScreen
+      ActiveScreen: ResultsScreen,
+      inProgress: false
     });
   }
 
   restart = () => this.setState(this.getInitialState());
 
-  answerQuestion = answer => this.setState({
-    answers: [...this.state.answers, answer],
-    activeQuestion: this.state.activeQuestion + 1
-  }, () => this.state.activeQuestion >= this.state.questions.length && this.finish());
+  answerQuestion = answer =>
+    this.setState(
+      {
+        answers: [...this.state.answers, answer],
+        activeQuestion: this.state.activeQuestion + 1
+      },
+      () =>
+        this.state.activeQuestion >= this.state.questions.length &&
+        this.finish()
+    );
 
   render() {
     const { ActiveScreen } = this.state;
@@ -80,7 +99,8 @@ class App extends Component {
           start={this.start}
           answerQuestion={this.answerQuestion}
           restart={this.restart}
-          {...this.state} />
+          {...this.state}
+        />
       </Container>
     );
   }

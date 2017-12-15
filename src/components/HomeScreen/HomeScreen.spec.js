@@ -17,4 +17,12 @@ describe("HomeScreen", () => {
 
     expect(start.called).toEqual(true);
   });
+  it("should not allow the 'Start' button to be pressed if the quiz is in progress.", () => {
+    const start = sinon.spy();
+    const instance = mount(<HomeScreen start={start} inProgress />);
+
+    instance.find("button").simulate("click");
+
+    expect(start.called).toEqual(false);
+  });
 });

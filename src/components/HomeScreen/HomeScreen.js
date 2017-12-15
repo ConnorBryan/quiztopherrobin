@@ -7,7 +7,7 @@ import splash from "./splash.jpg";
 import "./HomeScreen.css";
 
 function HomeScreen(props) {
-  const { start } = props;
+  const { start, inProgress } = props;
 
   return (
     <Card.Group>
@@ -31,7 +31,7 @@ function HomeScreen(props) {
         </Card.Content>
 
         <Card.Content extra>
-          <Button className="fancy" floated="right" positive onClick={start}>
+          <Button className="fancy" floated="right" positive onClick={start} disabled={inProgress} loading={inProgress}>
             <Icon name="send" /> Start
           </Button>
         </Card.Content>
@@ -41,8 +41,8 @@ function HomeScreen(props) {
 }
 
 HomeScreen.propTypes = {
-  start: PropTypes.func.isRequired
+  start: PropTypes.func.isRequired,
+  inProgress: PropTypes.bool
 };
 
 export default HomeScreen;
-

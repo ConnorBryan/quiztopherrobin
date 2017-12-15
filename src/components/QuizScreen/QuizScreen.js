@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card, Icon } from "semantic-ui-react";
 
-import "./QuizScreen.css";
-
 function QuizScreen(props) {
   const { answerQuestion, questions, activeQuestion, restart } = props;
 
@@ -23,7 +21,7 @@ function QuizScreen(props) {
             </Card.Header>
         </Card.Content>
         <Card.Content textAlign="center">
-          <Card.Description className="QuizScreen-question">
+          <Card.Description className="question">
             {question}
           </Card.Description>
         </Card.Content>

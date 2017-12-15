@@ -7,3 +7,8 @@ body {
   text-transform: uppercase !important;
   letter-spacing: 0.33rem !important;
 }
+
+.question {
+  padding: 2rem 0 2rem 0 !important;
+  font-size: 1.2rem;
+}

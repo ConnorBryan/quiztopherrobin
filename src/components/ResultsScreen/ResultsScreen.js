@@ -27,13 +27,6 @@ function ResultsScreen(props) {
 
   return (
     <Card.Group itemsPerRow={1}>
-      <Card fluid>
-        <Card.Content textAlign="center">
-          <Card.Header as="h2" className="fancy">
-            You scored {correctAnswerCount}/{config.QUESTION_COUNT}{punctuation}
-          </Card.Header>
-        </Card.Content>
-      </Card>
       {answerResults.map(answer => (
         <Card
           raised
@@ -49,6 +42,11 @@ function ResultsScreen(props) {
             />
             <Card.Header as="h3" className="ResultsScreen-answerCard">
               {answer.questionNumber}. {answer.question}
+            </Card.Header>
+          </Card.Content>
+          <Card.Content extra>
+            <Card.Header as="h5">
+              <Icon name="pie chart" /> <em>{answer.category}</em>
             </Card.Header>
           </Card.Content>
           <Card.Content extra>
@@ -68,6 +66,10 @@ function ResultsScreen(props) {
       ))}
       <Card fluid>
         <Card.Content extra>
+          <Card.Header as="h2" className="fancy">
+            You scored {correctAnswerCount}/{config.QUESTION_COUNT}
+            {punctuation}
+          </Card.Header>
           <Button className="fancy" floated="right" positive onClick={restart}>
             <Icon name="refresh" /> Play again
           </Button>

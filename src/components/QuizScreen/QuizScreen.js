@@ -26,7 +26,9 @@ function QuizScreen(props) {
           </Card.Header>
         </Card.Content>
         <Card.Content extra>
-          <Card.Header as="h5">{category}</Card.Header>
+          <Card.Header as="h5">
+            <Icon name="pie chart" /> <em>{category}</em>
+          </Card.Header>
         </Card.Content>
         <Card.Content textAlign="center">
           <Card.Description className="question">{question}</Card.Description>

@@ -5,7 +5,7 @@ import { Button, Card, Icon } from "semantic-ui-react";
 import "./QuizScreen.css";
 
 function QuizScreen(props) {
-  const { answerQuestion, questions, activeQuestion } = props;
+  const { answerQuestion, questions, activeQuestion, restart } = props;
 
   if (!questions[activeQuestion]) return null;
 
@@ -17,6 +17,9 @@ function QuizScreen(props) {
         <Card.Content>
             <Card.Header as="h4">
                 Question {activeQuestion + 1} / {questions.length}
+                <Button className="fancy" floated="right" negative onClick={restart}>
+                  <Icon name="reply" /> Quit
+                </Button>
             </Card.Header>
         </Card.Content>
         <Card.Content textAlign="center">
@@ -49,7 +52,8 @@ function QuizScreen(props) {
 QuizScreen.propTypes = {
   answerQuestion: PropTypes.func.isRequired,
   questions: PropTypes.arrayOf(PropTypes.object).isRequired,
-  activeQuestion: PropTypes.number.isRequired
+  activeQuestion: PropTypes.number.isRequired,
+  restart: PropTypes.func.isRequired  
 };
 
 export default QuizScreen;

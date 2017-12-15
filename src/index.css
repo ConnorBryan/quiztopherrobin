@@ -1,0 +1,13 @@
+body {
+  background: url(/cloudy-day.png);
+  padding: 4rem 0 4rem 0 !important;
+}
+
+.fancy {
+  text-transform: uppercase !important;
+  letter-spacing: 0.33rem !important;
+}
+
+.text-center {
+  text-align: center !important;
+}

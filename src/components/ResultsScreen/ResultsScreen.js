@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import { Button, Card, Icon, Label } from "semantic-ui-react";
+
+import config from "../../config";
+import "./ResultsScreen.css";
 
 const Aux = props => props.children;
 
@@ -30,7 +32,7 @@ function ResultsScreen(props) {
       <Card fluid>
         <Card.Content textAlign="center">
           <Card.Header as="h2" className="fancy">
-            You got {correctAnswerCount}/10 correct{punctuation}
+            You got {correctAnswerCount}/{config.QUESTION_COUNT} correct{punctuation}
           </Card.Header>
         </Card.Content>
       </Card>
@@ -40,14 +42,14 @@ function ResultsScreen(props) {
           key={answer.questionNumber}
           color={getColor(answer.isCorrect)}
         >
-          <Label
-            as="div"
-            color={getColor(answer.isCorrect)}
-            icon={getIcon(answer.isCorrect)}
-            corner="right"
-          />
           <Card.Content>
-            <Card.Header as="h3">
+            <Label
+              as="div"
+              color={getColor(answer.isCorrect)}
+              icon={getIcon(answer.isCorrect)}
+              corner="right"
+            />
+            <Card.Header as="h3" className="ResultsScreen-answerCard">
               {answer.questionNumber}. {answer.question}
             </Card.Header>
           </Card.Content>

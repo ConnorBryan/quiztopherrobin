@@ -25,7 +25,7 @@ function HomeScreen(props) {
             className="HomeScreen-description"
             textAlign="center"
           >
-            You will be presented with ten true/false questions. <br />
+            You will be presented with {config.QUESTION_COUNT} true/false questions. <br />
             Can you answer them all correctly and score 100%?
           </Card.Description>
         </Card.Content>

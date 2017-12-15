@@ -32,7 +32,6 @@ class App extends Component {
       "You may start a new quiz at any time."
     );
     this.restart();
-    alert(e);
   }
 
   /**
@@ -73,6 +72,7 @@ class App extends Component {
   };
 
   /**
+   * @async
    * @method fetchQuestions
    * @desc Retrieves a collection of question objects from the configured API endpoint.
    * @returns {Promise<Array<QuestionType>>}
@@ -146,14 +146,14 @@ class App extends Component {
     this.props.displayAlert(
       config.ALERT_TYPES.NOTICE,
       "Your results are in",
-      `You scored ${this.state.correctAnswerCount} / ${
-        this.state.questions.length
-      }.`
+      `You scored ${this.state.correctAnswerCount} / ${this.state.questions
+        .length}.`
     );
 
   /**
    * @method restart
    * @desc Put everything back together again, as if none of it ever happened.
+   * @returns {undefined}
    */
   restart = () => this.setState(this.getInitialState());
 

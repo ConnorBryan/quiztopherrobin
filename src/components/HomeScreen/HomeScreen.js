@@ -13,7 +13,7 @@ function HomeScreen(props) {
     <Card.Group>
       <Card fluid>
         <Card.Content>
-          <Card.Header className="fancy text-center">
+          <Card.Header textAlign="center" className="fancy">
             Welcome to {config.APP_TITLE}
           </Card.Header>
         </Card.Content>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuid from 'uuid/v1';
+import { Container } from "semantic-ui-react";
 
 import { fetchQuestions } from './services';
 import HomeScreen from './components/HomeScreen';
@@ -74,11 +75,13 @@ class App extends Component {
     const { ActiveScreen } = this.state;
 
     return (
-      <ActiveScreen
-        start={this.start}
-        answerQuestion={this.answerQuestion}
-        restart={this.restart}
-        {...this.state} />
+      <Container>
+        <ActiveScreen
+          start={this.start}
+          answerQuestion={this.answerQuestion}
+          restart={this.restart}
+          {...this.state} />
+      </Container>
     );
   }
 }

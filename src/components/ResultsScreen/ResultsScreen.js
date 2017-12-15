@@ -5,8 +5,6 @@ import { Button, Card, Icon, Label } from "semantic-ui-react";
 import config from "../../config";
 import "./ResultsScreen.css";
 
-const Aux = props => props.children;
-
 export function getPunctuation(correctAnswerCount) {
   const count = +correctAnswerCount;
 
@@ -20,7 +18,7 @@ export function getColor(correct) {
 }
 
 export function getIcon(correct) {
-  return correct ? "checkmark" : "remove";
+  return correct ? "plus" : "minus";
 }
 
 function ResultsScreen(props) {
@@ -32,7 +30,7 @@ function ResultsScreen(props) {
       <Card fluid>
         <Card.Content textAlign="center">
           <Card.Header as="h2" className="fancy">
-            You got {correctAnswerCount}/{config.QUESTION_COUNT} correct{punctuation}
+            You scored {correctAnswerCount}/{config.QUESTION_COUNT}{punctuation}
           </Card.Header>
         </Card.Content>
       </Card>
@@ -71,7 +69,7 @@ function ResultsScreen(props) {
       <Card fluid>
         <Card.Content extra>
           <Button className="fancy" floated="right" positive onClick={restart}>
-            <Icon name="refresh" /> Restart
+            <Icon name="refresh" /> Play again
           </Button>
         </Card.Content>
       </Card>

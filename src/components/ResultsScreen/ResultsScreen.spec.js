@@ -25,8 +25,8 @@ describe("QuizScreen utility functions", () => {
   });
   describe("getIcon", () => {
     it("should return the correct icon for a given answer", () => {
-      expect(getIcon(true)).toEqual("checkmark");
-      expect(getIcon(false)).toEqual("remove");
+      expect(getIcon(true)).toEqual("plus");
+      expect(getIcon(false)).toEqual("minus");
     });
   });
 });

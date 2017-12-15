@@ -10,7 +10,7 @@ function HomeScreen(props) {
   const { start } = props;
 
   return (
-    <Card.Group fluid>
+    <Card.Group>
       <Card fluid>
         <Card.Content>
           <Card.Header className="fancy text-center">
